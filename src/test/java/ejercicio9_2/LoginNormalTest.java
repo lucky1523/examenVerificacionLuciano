@@ -16,7 +16,7 @@ public class LoginNormalTest {
         LoginNormal loginNormal = new LoginNormal();
         String actual = loginNormal.roleUser("admin","password");
         String  expected = "PERMISSION ROLE";
-        Assertions.assertEquals(actual,expected,"ERROR ");
+        Assertions.assertEquals(actual,expected,"ERROR:! ");
 
 
 
