@@ -22,13 +22,16 @@ public class LoginTest {
 
     @Test
     public void verify_role(){
-
-
+        System.out.println("*");
+        System.out.println("*");
         Login login = new Login();
         String expected = "PERMISSION ROLE CRUD" + " " + LocalDateTime.now();
         String actual = login.roleUser("admin","password");
 
-        Boolean resul = expected.contains(actual);
+        System.out.println(expected);
+        System.out.println(actual);
+        Boolean resul = actual.contains("PERMISSION ROLE CRUD" + " " + LocalDateTime.now());
+
         System.out.println(resul);
         Assertions.assertTrue(resul);
     }
@@ -37,9 +40,9 @@ public class LoginTest {
     @Test
     public void verify_role_incorrect(){
 
-        Login login = new Login();
+        Login login2 = new Login();
         String expected = "Incorrect USER and PWD";
-        String actual = login.roleUser("asdfg","password");
+        String actual = login2.roleUser("asdfg","password");
 
         Assertions.assertEquals(expected,actual,"Error");
     }
