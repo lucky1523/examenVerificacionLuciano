@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.MockedStatic;
 
-
+import java.time.LocalDateTime;
 
 
 public class LoginTest {
@@ -17,7 +17,7 @@ public class LoginTest {
         MockedStatic<UtilStatic> objetoMock = Mockito.mockStatic(UtilStatic.class);
         MockedStatic<Util2Static> objetoMock2 = Mockito.mockStatic(Util2Static.class);
         objetoMock.when(()->UtilStatic.getPermision("admin","password")).thenReturn("CRUD");
-        objetoMock2.when(()->Util2Static.isUserValid("admin","root")).thenReturn(true);
+        objetoMock2.when(()->Util2Static.isUserValid("admin","password")).thenReturn(true);
     }
 
     @Test
@@ -25,10 +25,12 @@ public class LoginTest {
 
 
         Login login = new Login();
-        String expected = "PERMISSION ROLE CRUD";
+        String expected = "PERMISSION ROLE CRUD" + " " + LocalDateTime.now();
         String actual = login.roleUser("admin","password");
 
-        Assertions.assertEquals(expected,actual,"Error");
+        Boolean resul = expected.contains(actual);
+        System.out.println(resul);
+        Assertions.assertTrue(resul);
     }
 
 
